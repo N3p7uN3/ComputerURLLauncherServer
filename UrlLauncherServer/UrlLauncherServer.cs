@@ -9,14 +9,14 @@ namespace UrlLauncherServer
     class UrlLauncherServer
     {
         private TcpComServer mServer;
-        private string mCmdStr;
+        private string mApp;
+        private string mArgs;
         
-        public UrlLauncherServer(string cmdStr)
+        public UrlLauncherServer()
         {
             mServer = new TcpComServer();
             mServer.ConnectionEvent += new TcpComServer.ConnectionEventHandler(mServer_ConnectionEvent);
             mServer.PacketReady += new TcpComServer.PacketReadyEventHandler(mServer_PacketReady);
-            mCmdStr = cmdStr;
             mServer.ServerConnectionStateChange += new TcpComServer.ConnectionStateChangeEventHander(mServer_ServerConnectionStateChange);
         }
 
@@ -25,9 +25,10 @@ namespace UrlLauncherServer
             //throw new NotImplementedException();
         }
 
-        public void UpdateCmdStr(string cmdStr)
+        public void UpdateCmdStr(string app, string arguments)
         {
-            mCmdStr = cmdStr;
+            mApp = app;
+            mArgs = arguments;
         }
 
         void mServer_PacketReady(string packet)
@@ -37,8 +38,8 @@ namespace UrlLauncherServer
             //just assume the contents is ONLY a URL
             if ((packet != "hello") && (packet != "keepAlive"))
             {
-                string cmd = mCmdStr.Replace("%u", packet);
-                System.Diagnostics.Process.Start(cmd);
+                //string cmd = mCmdStr.Replace("%u", packet);
+                System.Diagnostics.Process.Start(mApp, mArgs.Replace("%u", packet));
                 Debug.Print("got past the launch");
             }
         }

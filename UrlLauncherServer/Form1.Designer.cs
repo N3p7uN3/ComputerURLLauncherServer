@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.txtCmd = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkStartup = new System.Windows.Forms.CheckBox();
+            this.txtArguments = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtCmd
@@ -38,25 +39,35 @@
             this.txtCmd.Name = "txtCmd";
             this.txtCmd.Size = new System.Drawing.Size(268, 20);
             this.txtCmd.TabIndex = 0;
-            this.txtCmd.Text = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe %u";
+            this.txtCmd.Text = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe";
             this.txtCmd.TextChanged += new System.EventHandler(this.txtCmd_TextChanged);
             // 
-            // checkBox1
+            // chkStartup
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 40);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Start on startup";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkStartup.AutoSize = true;
+            this.chkStartup.Location = new System.Drawing.Point(12, 79);
+            this.chkStartup.Name = "chkStartup";
+            this.chkStartup.Size = new System.Drawing.Size(98, 17);
+            this.chkStartup.TabIndex = 1;
+            this.chkStartup.Text = "Start on startup";
+            this.chkStartup.UseVisualStyleBackColor = true;
+            this.chkStartup.CheckedChanged += new System.EventHandler(this.chkStartup_CheckedChanged);
+            // 
+            // txtArguments
+            // 
+            this.txtArguments.Location = new System.Drawing.Point(13, 39);
+            this.txtArguments.Name = "txtArguments";
+            this.txtArguments.Size = new System.Drawing.Size(100, 20);
+            this.txtArguments.TabIndex = 2;
+            this.txtArguments.Text = "%u";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 63);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(359, 108);
+            this.Controls.Add(this.txtArguments);
+            this.Controls.Add(this.chkStartup);
             this.Controls.Add(this.txtCmd);
             this.Name = "Form1";
             this.Text = "URL Launcher Server";
@@ -68,7 +79,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtCmd;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkStartup;
+        private System.Windows.Forms.TextBox txtArguments;
     }
 }
 
